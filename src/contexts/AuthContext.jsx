@@ -6,7 +6,7 @@ import { api } from "../services/axiosClient";
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [client, setClient] = useState(null);
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [newLoading, setNewLoading] = useState(true);
 
@@ -17,8 +17,8 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
       const response = await api.post("/auth/login", data);
       localStorage.setItem("@TOKENCLIENT", response.data.token);
-      const { token, client: clientResponse } = response.data;
-      setClient(clientResponse);
+      const { token, user: userResponse } = response.data;
+      setUser(userResponse);
       localStorage.setItem("@TOKEN", token);
       toast.success("Login relizado com sucesso!");
 
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const getUser = async () => {
+  const getUser = async (id) => {
     const tokenValidate = localStorage.getItem("@TOKEN");
 
     if (!tokenValidate) {
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
     }
     api.defaults.headers.common["Authorization"] = `Bearer ${tokenValidate}`;
     try {
-      const response = await api.get(`/users/${tokenValidate}`);
+      const response = await api.get(`/users/${id}`);
 
       setClient(response.data);
     } catch (error) {
@@ -80,8 +80,8 @@ export const AuthProvider = ({ children }) => {
         loading,
         setLoading,
         NewLogin,
-        client,
-        setClient,
+        user,
+        setUser,
         newLoading,
         setNewLoading,
         NewRegister,
