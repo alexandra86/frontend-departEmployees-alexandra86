@@ -4,6 +4,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { HomePage } from "./pages/HomePage";
 import { HomeProvider } from "./contexts/HomeContext";
+import { DepartmentsPage } from "./pages/DepartmentsPage";
 
 const App = () => {
   return (
@@ -15,6 +16,14 @@ const App = () => {
         element={
           <HomeProvider>
             <HomePage />
+          </HomeProvider>
+        }
+      />
+      <Route
+        path="/department"
+        element={
+          <HomeProvider>
+            <DepartmentsPage />
           </HomeProvider>
         }
       />

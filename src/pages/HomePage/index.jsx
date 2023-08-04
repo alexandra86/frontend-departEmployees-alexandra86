@@ -10,8 +10,10 @@ import { EditTaskModal } from "../../components/EditTaskModal";
 import { ContactsModal } from "../../components/ContactsModal";
 import "react-toastify/dist/ReactToastify.css";
 import { CardTask } from "../../components/CardTask";
+import imgMobile from "../../img/buttonMobile.png";
 
 export const HomePage = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth > 800);
   const { user, newLoading, setUser } = useContext(AuthContext);
   const {
     modalIsOpen,
@@ -21,7 +23,7 @@ export const HomePage = () => {
     handleContactsModal,
   } = useContext(HomeContext);
   const [tasks, setTasks] = useState([]);
-
+  console.log(user);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchTasks = async () => {
@@ -37,12 +39,42 @@ export const HomePage = () => {
     fetchTasks();
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth > 800);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const goLoginClick = () => {
     navigate("/");
     setUser(null);
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@TOKENCLIENT");
   };
+
+  const goDepartClick = () => {
+    navigate("/department");
+  };
+
+  const vewMenu = () => {
+    return (
+      <div className="areaButtonsHome">
+        <button className="btComeBackDepart" onClick={goDepartClick}>
+          Departamentos
+        </button>
+        <button className="btComeBackLogin" onClick={goLoginClick}>
+          Sair
+        </button>
+      </div>
+    );
+  };
+
   return (
     <>
       {newLoading && <div>Carregando...</div>}
@@ -54,9 +86,23 @@ export const HomePage = () => {
               alt="logo de DepartEmployees"
               className="logoDepart"
             />
-            <button className="btComeBackLogin" onClick={goLoginClick}>
-              Sair
-            </button>
+            {isMobile ? (
+              <div className="areaButtonsHome">
+                <button className="btComeBackDepart" onClick={goDepartClick}>
+                  Departamentos
+                </button>
+                <button className="btComeBackLogin" onClick={goLoginClick}>
+                  Sair
+                </button>
+              </div>
+            ) : (
+              <img
+                src={imgMobile}
+                alt=""
+                className="btMobile"
+                onClick={vewMenu}
+              />
+            )}
           </header>
 
           <div className="areaUser">

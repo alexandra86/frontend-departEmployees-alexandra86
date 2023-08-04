@@ -17,14 +17,15 @@ export const AuthProvider = ({ children }) => {
       setLoading(true);
       const response = await api.post("/auth/login", data);
       localStorage.setItem("@TOKENCLIENT", response.data.token);
-      const { token, user: userResponse } = response.data;
-      setUser(userResponse);
+      const { token } = response.data;
+      setUser(response.data.user);
       localStorage.setItem("@TOKEN", token);
       toast.success("Login relizado com sucesso!");
 
       api.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${response.data.token}`;
+      localStorage.setItem("@userId", response.data.user.id);
       getUser();
       setTimeout(() => {
         navigate("/home");
@@ -36,8 +37,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const getUser = async (id) => {
+  const getUser = async () => {
     const tokenValidate = localStorage.getItem("@TOKEN");
+    const userId = localStorage.getItem("@userId");
 
     if (!tokenValidate) {
       setNewLoading(false);
@@ -46,7 +48,7 @@ export const AuthProvider = ({ children }) => {
 
     api.defaults.headers.common["Authorization"] = `Bearer ${tokenValidate}`;
     try {
-      const response = await api.get(`/users/${id}`);
+      const response = await api.get(`/users/${userId}`);
       setUser(response.data);
     } catch (error) {
       console.log(error);
@@ -56,12 +58,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const tokenValidate = localStorage.getItem("@TOKEN");
-    if (tokenValidate) {
-      getUser();
-    } else {
-      setNewLoading(false);
-    }
+    getUser();
   }, []);
 
   const NewRegister = async (data) => {

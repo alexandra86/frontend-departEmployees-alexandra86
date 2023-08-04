@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledHomePage = styled.div`
+export const StyledDepartmentPage = styled.div`
   max-width: 100vw;
   width: 100%;
   height: 100vh;
@@ -21,12 +21,6 @@ export const StyledHomePage = styled.div`
     background-color: #051d40;
     padding-right: 1.313rem;
     border-radius: 0.25rem;
-  }
-
-  .areaButtonsHome {
-    width: 28%;
-    display: flex;
-    justify-content: space-between;
   }
 
   .areaUser {
@@ -58,29 +52,6 @@ export const StyledHomePage = styled.div`
     height: 88px;
     width: 203px;
     object-fit: contain;
-  }
-
-  .btMobile {
-    width: 2.188rem;
-    height: 2.063rem;
-  }
-
-  .btViewProfile {
-    background: rgb(159, 47, 255);
-    background: radial-gradient(
-      circle,
-      rgba(159, 47, 255, 1) 24%,
-      rgba(5, 29, 64, 1) 100%
-    );
-    height: 1.5rem;
-    border-radius: 0.438rem;
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    color: #ffffff;
-  }
-
-  .btViewProfile:hover {
-    -webkit-transform: scale(1.1);
   }
 
   .areaInformation {
@@ -132,20 +103,20 @@ export const StyledHomePage = styled.div`
     color: #ffffff;
   }
 
-  .areaContact {
+  .areaDepartment {
     max-width: 90rem;
     width: 100%;
     height: 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
   }
 
-  .bTContactHome {
+  .titleDepartment {
     background-color: transparent;
     font-family: "Roboto", sans-serif;
     font-weight: 600;
-    font-size: 1.125rem;
+    font-size: 1.438rem;
     color: #000000;
   }
 
@@ -169,20 +140,6 @@ export const StyledHomePage = styled.div`
 
   .btComeBackLogin {
     max-width: 4.218125rem;
-    width: 100%;
-    height: 2.506875rem;
-    padding: 0rem 1rem;
-    border-radius: 0.25rem;
-    border: 0.07625rem solid #212529;
-    background-color: #8698d9;
-    font-family: "Roboto", sans-serif;
-    font-weight: 600;
-    font-size: 0.75rem;
-    color: #000000;
-  }
-
-  .btComeBackDepart {
-    max-width: 8.218125rem;
     width: 100%;
     height: 2.506875rem;
     padding: 0rem 1rem;
@@ -223,7 +180,7 @@ export const StyledHomePage = styled.div`
       align-items: center;
       width: 60%;
     }
-    .areaContact {
+    .areaDepartment {
       display: flex;
       align-items: center;
       gap: 0;
