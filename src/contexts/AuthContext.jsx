@@ -43,20 +43,25 @@ export const AuthProvider = ({ children }) => {
       setNewLoading(false);
       return;
     }
+
     api.defaults.headers.common["Authorization"] = `Bearer ${tokenValidate}`;
     try {
       const response = await api.get(`/users/${id}`);
-
-      setClient(response.data);
+      setUser(response.data);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     } finally {
       setNewLoading(false);
     }
   };
 
   useEffect(() => {
-    getUser();
+    const tokenValidate = localStorage.getItem("@TOKEN");
+    if (tokenValidate) {
+      getUser();
+    } else {
+      setNewLoading(false);
+    }
   }, []);
 
   const NewRegister = async (data) => {

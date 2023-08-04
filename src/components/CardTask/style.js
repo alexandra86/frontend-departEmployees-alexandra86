@@ -5,22 +5,15 @@ import lapis from "../../img/pencil.png";
 export const StyleCardContact = styled.li`
   max-width: 18.313rem;
   width: 100%;
-  height: 12.0625rem;
+  height: 11.0625rem;
   padding: 0.8125rem 0.38875rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-repeat: no-repeat;
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF8mIwyPaSiMfIA3WT2EsBUkR35Wo-y33_Bw&usqp=CAU");
-  background-position: center;
-  background-size: cover;
+  background-color: #d9e8f5;
   border-radius: 0.25rem;
   animation: card 1.5s ease-in;
   transform: 1.5s ease-in;
-
-  :hover {
-    border: 0.094rem solid #000000;
-  }
 
   .areClient {
     max-width: 18.75rem;

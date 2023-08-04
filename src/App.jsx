@@ -3,7 +3,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { HomePage } from "./pages/HomePage";
-import { HomeProvider } from "./contexts/ContactContext";
+import { HomeProvider } from "./contexts/HomeContext";
 
 const App = () => {
   return (

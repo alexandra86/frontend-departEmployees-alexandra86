@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { toast } from "react-toastify";
 import { api } from "../services/axiosClient";
@@ -11,7 +11,7 @@ export const HomeProvider = ({ children }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalIsEditOpen, setIsEditOpen] = useState(false);
   const [modalIsContactsOpen, setIsContactsOpen] = useState(false);
-  const [selectContact, setSelectContact] = useState(null);
+  const [selectTask, setSelectTask] = useState(null);
   const [loading, setLoading] = useState(false);
   const [modalIsEditClientOpen, setIsEditClientOpen] = useState(false);
   const [selectClient, setSelectClient] = useState(null);
@@ -41,17 +41,17 @@ export const HomeProvider = ({ children }) => {
     setIsDeleteClientOpen(!modalIsDeleteClientOpen);
   };
 
-  const RegisterContact = async (data) => {
+  const RegisterTask = async (data) => {
     try {
       setLoading(true);
 
-      await api.post("/contacts", data);
+      await api.post("/tasks", data);
 
       getUser();
 
       setIsOpen(false);
 
-      toast.success("Sucesso! Contato Cadastrado!");
+      toast.success("Sucesso! Tarefa Criada!");
     } catch (error) {
       toast.error("Algo não está certo!");
     } finally {
@@ -59,14 +59,14 @@ export const HomeProvider = ({ children }) => {
     }
   };
 
-  const removeContact = async (id) => {
+  const removeTask = async (id) => {
     try {
       setLoading(true);
 
-      await api.delete(`/contacts/${id}`);
+      await api.delete(`/tasks/${id}`);
       getUser();
 
-      toast.info("Contato removido com sucesso!");
+      toast.info("Tarefa removida com sucesso!");
     } catch (error) {
       toast.error("Algo não está certo!");
     } finally {
@@ -74,15 +74,15 @@ export const HomeProvider = ({ children }) => {
     }
   };
 
-  const editContact = async (data) => {
+  const editTask = async (data) => {
     try {
       setLoading(true);
 
-      await api.patch(`/contacts/${data.id}`, data);
+      await api.patch(`/tasks/${data.id}`, data);
       getUser();
 
       setIsEditOpen(false);
-      toast.success("Contato alterado com sucesso!");
+      toast.success("Tarefa alterada com sucesso!");
     } catch (error) {
       toast.error("Algo não está certo!");
     } finally {
@@ -140,15 +140,15 @@ export const HomeProvider = ({ children }) => {
         setIsOpen,
         modalIsEditOpen,
         setIsEditOpen,
-        selectContact,
-        setSelectContact,
+        selectTask,
+        setSelectTask,
         loading,
         setLoading,
-        RegisterContact,
+        RegisterTask,
         handleModal,
         handleEditModal,
-        removeContact,
-        editContact,
+        removeTask,
+        editTask,
         handleContactsModal,
         modalIsContactsOpen,
         setIsContactsOpen,

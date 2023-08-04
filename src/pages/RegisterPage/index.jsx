@@ -40,7 +40,6 @@ export const RegisterPage = () => {
     setTimeout(async () => {
       const information = { ...data };
       await NewRegister(information);
-      console.log(information);
 
       reset();
     }, 1000);

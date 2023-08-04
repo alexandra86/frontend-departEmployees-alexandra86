@@ -1,7 +1,7 @@
 import { React, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { ContactContext } from "../../contexts/ContactContext.jsx";
+import { HomeContext } from "../../contexts/ContactContext.jsx";
 import { StyledContainerModal } from "./style.js";
 import { createPortal } from "react-dom";
 import { editClientSchema } from "./editClientSchema.js";
@@ -10,7 +10,7 @@ import InputMask from "react-input-mask";
 
 export const EditClientModal = () => {
   const { handleEditClientModal, editClient, loading, client } =
-    useContext(ContactContext);
+    useContext(HomeContext);
 
   const {
     register,
@@ -20,12 +20,12 @@ export const EditClientModal = () => {
   } = useForm({
     mode: "onBlur",
     defaultValues: {
-      id: client.client.id,
-      name: client.client.name,
-      email: client.client.email,
-      phone: client.client.phone,
-      image: client.client.image,
-      gender: client.client.gender,
+      // id: client.client.id,
+      // name: client.client.name,
+      // email: client.client.email,
+      // phone: client.client.phone,
+      // image: client.client.image,
+      // gender: client.client.gender,
     },
     resolver: yupResolver(editClientSchema),
   });
