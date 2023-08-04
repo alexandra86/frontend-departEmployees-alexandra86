@@ -24,9 +24,9 @@ export const StyledHomePage = styled.div`
   }
 
   .areaButtonsHome {
-    width: 28%;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
   }
 
   .areaUser {
@@ -196,6 +196,12 @@ export const StyledHomePage = styled.div`
   }
 
   .btComeBackLogin:hover {
+    border: 0.07625rem solid #9f2fff;
+    background-color: #9f2fff;
+    color: #f8f9fa;
+  }
+
+  .btComeBackDepart:hover {
     border: 0.07625rem solid #9f2fff;
     background-color: #9f2fff;
     color: #f8f9fa;

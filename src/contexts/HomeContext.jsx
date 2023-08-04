@@ -10,7 +10,6 @@ export const HomeProvider = ({ children }) => {
   const { user, getUser } = useContext(AuthContext);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalIsEditOpen, setIsEditOpen] = useState(false);
-  const [modalIsContactsOpen, setIsContactsOpen] = useState(false);
   const [selectTask, setSelectTask] = useState(null);
   const [loading, setLoading] = useState(false);
   const [modalIsEditClientOpen, setIsEditClientOpen] = useState(false);
@@ -26,10 +25,6 @@ export const HomeProvider = ({ children }) => {
 
   const handleEditModal = () => {
     setIsEditOpen(!modalIsEditOpen);
-  };
-
-  const handleContactsModal = () => {
-    setIsContactsOpen(!modalIsContactsOpen);
   };
 
   const handleEditClientModal = () => {
@@ -149,9 +144,6 @@ export const HomeProvider = ({ children }) => {
         handleEditModal,
         removeTask,
         editTask,
-        handleContactsModal,
-        modalIsContactsOpen,
-        setIsContactsOpen,
         modalIsEditClientOpen,
         setIsEditClientOpen,
         selectClient,

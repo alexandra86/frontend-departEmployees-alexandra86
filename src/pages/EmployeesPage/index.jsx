@@ -2,31 +2,33 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { StyledDepartmentPage } from "./style";
 import logoDepartment from "../../img/LogoDepart.png";
-import { CardDepartment } from "../../components/CardDepartments";
 import { useNavigate } from "react-router-dom";
+import { CardEmployee } from "../../components/CardEmployee";
 
-export const DepartmentsPage = () => {
-  const { user, newLoading, setUser } = useContext(AuthContext);
-  const [departments, setDepartments] = useState([]);
+export const EmployeesPage = () => {
+  const { user, newLoading } = useContext(AuthContext);
+  const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchDepartments = async () => {
+    const fetchEmployees = async () => {
       try {
-        const response = await fetch("http://localhost/api/departments");
+        const response = await fetch("http://localhost/api/users");
         const data = await response.json();
-        setDepartments(data);
+        setEmployees(data);
       } catch (error) {
         console.error("Erro ao buscar tarefas:", error);
       }
     };
 
-    fetchDepartments();
+    fetchEmployees();
   }, []);
 
   const goHomeClick = () => {
     navigate("/home");
   };
+
+  console.log(employees);
 
   return (
     <>
@@ -53,11 +55,11 @@ export const DepartmentsPage = () => {
 
           <div className="areaInformation">
             <div className="areaDepartment">
-              <h3 className="titleDepartment">&#128202; Departamentos</h3>
+              <h3 className="titleDepartment">&#128202; Funcionários</h3>
             </div>
             <ul className="ulCardContact">
-              {departments.map((elem) => (
-                <CardDepartment key={elem.id} elem={elem} />
+              {employees.map((elem) => (
+                <CardEmployee key={elem.id} elem={elem} />
               ))}
             </ul>
           </div>

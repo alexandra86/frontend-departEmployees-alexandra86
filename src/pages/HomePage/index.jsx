@@ -7,7 +7,6 @@ import { StyledHomePage } from "./style";
 import logoHome from "../../img/LogoDepart.png";
 import { RegisterTaskModal } from "../../components/RegisterTaskModal";
 import { EditTaskModal } from "../../components/EditTaskModal";
-import { ContactsModal } from "../../components/ContactsModal";
 import "react-toastify/dist/ReactToastify.css";
 import { CardTask } from "../../components/CardTask";
 import imgMobile from "../../img/buttonMobile.png";
@@ -22,8 +21,9 @@ export const HomePage = () => {
     modalIsContactsOpen,
     handleContactsModal,
   } = useContext(HomeContext);
+
   const [tasks, setTasks] = useState([]);
-  console.log(user);
+
   const navigate = useNavigate();
   useEffect(() => {
     const fetchTasks = async () => {
@@ -56,10 +56,15 @@ export const HomePage = () => {
     setUser(null);
     localStorage.removeItem("@TOKEN");
     localStorage.removeItem("@TOKENCLIENT");
+    localStorage.removeItem("@userId");
   };
 
   const goDepartClick = () => {
     navigate("/department");
+  };
+
+  const goEmployeeClick = () => {
+    navigate("/employee");
   };
 
   const vewMenu = () => {
@@ -90,6 +95,9 @@ export const HomePage = () => {
               <div className="areaButtonsHome">
                 <button className="btComeBackDepart" onClick={goDepartClick}>
                   Departamentos
+                </button>
+                <button className="btComeBackDepart" onClick={goEmployeeClick}>
+                  Funcionários
                 </button>
                 <button className="btComeBackLogin" onClick={goLoginClick}>
                   Sair

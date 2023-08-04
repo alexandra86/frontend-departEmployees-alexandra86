@@ -5,6 +5,7 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { HomePage } from "./pages/HomePage";
 import { HomeProvider } from "./contexts/HomeContext";
 import { DepartmentsPage } from "./pages/DepartmentsPage";
+import { EmployeesPage } from "./pages/EmployeesPage";
 
 const App = () => {
   return (
@@ -24,6 +25,14 @@ const App = () => {
         element={
           <HomeProvider>
             <DepartmentsPage />
+          </HomeProvider>
+        }
+      />
+      <Route
+        path="/employee"
+        element={
+          <HomeProvider>
+            <EmployeesPage />
           </HomeProvider>
         }
       />
