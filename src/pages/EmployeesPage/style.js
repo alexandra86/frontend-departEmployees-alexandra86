@@ -49,8 +49,8 @@ export const StyledDepartmentPage = styled.div`
   }
 
   .logoDepart {
-    height: 88px;
-    width: 203px;
+    height: 5.5rem;
+    width: 12.688rem;
     object-fit: contain;
   }
 

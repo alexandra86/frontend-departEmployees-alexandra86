@@ -26,7 +26,7 @@ export const StyledHomePage = styled.div`
   .areaButtonsHome {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 0.625rem;
   }
 
   .areaUser {
@@ -55,8 +55,8 @@ export const StyledHomePage = styled.div`
   }
 
   .logoDepart {
-    height: 88px;
-    width: 203px;
+    height: 5.5rem;
+    width: 12.688rem;
     object-fit: contain;
   }
 
@@ -73,6 +73,8 @@ export const StyledHomePage = styled.div`
       rgba(5, 29, 64, 1) 100%
     );
     height: 1.5rem;
+    width: 4.625rem;
+    padding: 0.188rem 0.313rem;
     border-radius: 0.438rem;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
@@ -257,7 +259,7 @@ export const StyledHomePage = styled.div`
       align-items: center;
       width: 80%;
       flex-direction: column;
-      gap: 0.625rem;
+      gap: 1.625rem;
     }
 
     .areaInformation {
@@ -283,8 +285,13 @@ export const StyledHomePage = styled.div`
     .hello {
       align-items: center;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       gap: 0.625rem;
+    }
+    .btViewProfile {
+      height: 8.875rem;
+      width: 5.813rem;
+      padding: 0.438rem 0.313rem;
     }
   }
 `;

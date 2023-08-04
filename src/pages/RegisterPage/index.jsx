@@ -130,11 +130,11 @@ export const RegisterPage = () => {
             {...register(" department_id")}
           >
             <option value="">Selecione</option>
-            <option value="1">Financeiro</option>
-            <option value="2">Compras</option>
-            <option value="3">Marketing</option>
-            <option value="4">Tecnologia</option>
-            <option value="5">Logística</option>
+            <option value="financeiro">Financeiro</option>
+            <option value="compras">Compras</option>
+            <option value="marketing">Marketing</option>
+            <option value="tecnologia">Tecnologia</option>
+            <option value="logística">Logística</option>
           </select>
           {errors.department_id && (
             <p className="areaError">{errors.department_id.message}</p>

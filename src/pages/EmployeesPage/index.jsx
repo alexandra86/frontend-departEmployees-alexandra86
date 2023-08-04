@@ -28,8 +28,6 @@ export const EmployeesPage = () => {
     navigate("/home");
   };
 
-  console.log(employees);
-
   return (
     <>
       {newLoading && <div>Carregando...</div>}
@@ -55,7 +53,7 @@ export const EmployeesPage = () => {
 
           <div className="areaInformation">
             <div className="areaDepartment">
-              <h3 className="titleDepartment">&#128202; Funcionários</h3>
+              <h3 className="titleDepartment">&#128064; Funcionários</h3>
             </div>
             <ul className="ulCardContact">
               {employees.map((elem) => (

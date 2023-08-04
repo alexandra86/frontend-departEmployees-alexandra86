@@ -12,10 +12,10 @@ export const HomeProvider = ({ children }) => {
   const [modalIsEditOpen, setIsEditOpen] = useState(false);
   const [selectTask, setSelectTask] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [modalIsEditClientOpen, setIsEditClientOpen] = useState(false);
-  const [selectClient, setSelectClient] = useState(null);
-  const [modalIsDeleteClientOpen, setIsDeleteClientOpen] = useState(false);
-  const [selectDeleteClient, setSelectDeleteClient] = useState(null);
+  const [modalIsEditUserOpen, setIsEditUserOpen] = useState(false);
+  const [selectUser, setSelectUser] = useState(null);
+  const [modalIsDeleteUserOpen, setIsDeleteUserOpen] = useState(false);
+  const [selectDeleteUser, setSelectDeleteUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -27,13 +27,13 @@ export const HomeProvider = ({ children }) => {
     setIsEditOpen(!modalIsEditOpen);
   };
 
-  const handleEditClientModal = () => {
-    setIsEditClientOpen(!modalIsEditClientOpen);
+  const handleEditUserModal = () => {
+    setIsEditUserOpen(!modalIsEditUserOpen);
   };
 
-  const handleDeleteClientModal = (client) => {
-    setSelectDeleteClient(client);
-    setIsDeleteClientOpen(!modalIsDeleteClientOpen);
+  const handleDeleteUserModal = (user) => {
+    setSelectDeleteUser(user);
+    setIsDeleteUserOpen(!modalIsDeleteUserOpen);
   };
 
   const RegisterTask = async (data) => {
@@ -85,14 +85,14 @@ export const HomeProvider = ({ children }) => {
     }
   };
 
-  const editClient = async (data) => {
+  const editUser = async (data) => {
     try {
       setLoading(true);
 
       await api.patch(`/users/${data.id}`, data);
       getUser();
 
-      setIsEditClientOpen(false);
+      setIsEditUserOpen(false);
       toast.success("Perfil alterado com sucesso!");
     } catch (error) {
       toast.error("Algo não está certo!");
@@ -104,13 +104,14 @@ export const HomeProvider = ({ children }) => {
   const deleteToken = () => {
     localStorage.removeItem("@TOKENCLIENT");
     localStorage.removeItem("@TOKEN");
+    localStorage.removeItem("@userId");
   };
 
   const loginRedirect = () => {
     navigate("/");
   };
 
-  const removeClient = async (id) => {
+  const removeUser = async (id) => {
     try {
       setLoading(true);
 
@@ -144,20 +145,20 @@ export const HomeProvider = ({ children }) => {
         handleEditModal,
         removeTask,
         editTask,
-        modalIsEditClientOpen,
-        setIsEditClientOpen,
-        selectClient,
-        setSelectClient,
-        editClient,
-        handleEditClientModal,
-        handleDeleteClientModal,
-        modalIsDeleteClientOpen,
-        setIsDeleteClientOpen,
-        removeClient,
+        modalIsEditUserOpen,
+        setIsEditUserOpen,
+        selectUser,
+        setSelectUser,
+        editUser,
+        handleEditUserModal,
+        handleDeleteUserModal,
+        modalIsDeleteUserOpen,
+        setIsDeleteUserOpen,
+        removeUser,
         loginRedirect,
         deleteToken,
-        selectDeleteClient,
-        setSelectDeleteClient,
+        selectDeleteUser,
+        setSelectDeleteUser,
       }}
     >
       {children}

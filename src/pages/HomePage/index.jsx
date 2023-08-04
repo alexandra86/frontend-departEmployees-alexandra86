@@ -67,6 +67,10 @@ export const HomePage = () => {
     navigate("/employee");
   };
 
+  const goProfilePage = () => {
+    navigate("/profile");
+  };
+
   const vewMenu = () => {
     return (
       <div className="areaButtonsHome">
@@ -116,8 +120,15 @@ export const HomePage = () => {
           <div className="areaUser">
             <div className="hello">
               <h2 className="areaWelcome">Olá! &#128521;</h2>
+              <p className="areaWelcome">
+                {user.firstName}{" "}
+                <span className="areaWelcome">{user.lastName}</span>
+              </p>
             </div>
-            <p className="areaWelcome">{user.firstName}</p>
+            <button className="btViewProfile" onClick={goProfilePage}>
+              {" "}
+              Ver perfil
+            </button>
           </div>
 
           <div className="areaInformation">

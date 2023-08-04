@@ -1,16 +1,18 @@
 import { React, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { HomeContext } from "../../contexts/ContactContext.jsx";
+import { HomeContext } from "../../contexts/HomeContext.jsx";
 import { StyledContainerModal } from "./style.js";
 import { createPortal } from "react-dom";
-import { editClientSchema } from "./editClientSchema.js";
+import { editUserSchema } from "./editUserSchema.js";
 
 import InputMask from "react-input-mask";
+import { AuthContext } from "../../contexts/AuthContext.jsx";
 
-export const EditClientModal = () => {
-  const { handleEditClientModal, editClient, loading, client } =
-    useContext(HomeContext);
+export const EditUserModal = () => {
+  const { handleEditUserModal, editUser, loading } = useContext(HomeContext);
+
+  const { user } = useContext(AuthContext);
 
   const {
     register,
@@ -20,47 +22,63 @@ export const EditClientModal = () => {
   } = useForm({
     mode: "onBlur",
     defaultValues: {
-      // id: client.client.id,
-      // name: client.client.name,
-      // email: client.client.email,
-      // phone: client.client.phone,
-      // image: client.client.image,
-      // gender: client.client.gender,
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      phone: user?.phone,
+      department: user.department?.name,
     },
-    resolver: yupResolver(editClientSchema),
+    resolver: yupResolver(editUserSchema),
   });
 
   const submit = async (data) => {
     const information = { ...data };
-    await editClient(information);
+    await editUser(information);
 
     reset();
   };
 
-  const modalClientContent = (
+  const modalUserContent = (
     <StyledContainerModal>
       <div className="modalContent">
         <div className="headerModal">
           <h2 className="titleModal">Editar Perfil</h2>
           <button
-            onClick={() => handleEditClientModal()}
+            onClick={() => handleEditUserModal()}
             className="btCloseModal"
           >
             X
           </button>
         </div>
         <form className="formModal" onSubmit={handleSubmit(submit)} noValidate>
-          <label htmlFor="fullName" className="labelModal">
+          <label htmlFor="firstName" className="labelModal">
             Nome
           </label>
           <input
             type="text"
-            name="name"
+            name="firstName"
             placeholder="Digite seu nome"
             className="inputModal"
-            {...register("name")}
+            {...register("firstName")}
           />
-          {errors.name && <p className="areaError">{errors.name.message}</p>}
+          {errors.firstName && (
+            <p className="areaError">{errors.firstName.message}</p>
+          )}
+
+          <label htmlFor="firstName" className="labelModal">
+            Sobrenome
+          </label>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Digite seu nome"
+            className="inputModal"
+            {...register("lastName")}
+          />
+          {errors.lastName && (
+            <p className="areaError">{errors.lastName.message}</p>
+          )}
 
           <label htmlFor="email" className="labelModal">
             E-mail
@@ -87,35 +105,24 @@ export const EditClientModal = () => {
           />
           {errors.phone && <p className="areaError">{errors.phone.message}</p>}
 
-          <label htmlFor="image" className="labelModal">
-            Imagem
-          </label>
-          <input
-            type="url"
-            name="image"
-            placeholder="Digite o link da sua imagem"
-            className="inputModal"
-            {...register("image")}
-          />
-          {errors.image && <p className="areaError">{errors.image.message}</p>}
-
-          <label htmlFor="gender" className="labelModal">
-            Selecionar Gênero
+          <label htmlFor=" department_id" className="lbRegister">
+            Departamento
           </label>
           <select
-            name="gender"
-            id="gender"
-            className="selectModal"
-            {...register("gender")}
+            name=" department_id"
+            id=" department_id"
+            className="inputModal"
+            {...register(" department_id")}
           >
             <option value="">Selecione</option>
-            <option value="male">masculino</option>
-            <option value="female">feminino</option>
-            <option value="no binary">não binário</option>
-            <option value="I prefer not to say">não informado</option>
+            <option value="financeiro">Financeiro</option>
+            <option value="compras">Compras</option>
+            <option value="marketing">Marketing</option>
+            <option value="tecnologia">Tecnologia</option>
+            <option value="logística">Logística</option>
           </select>
-          {errors.gender && (
-            <p className="areaError">{errors.gender.message}</p>
+          {errors.department_id && (
+            <p className="areaError">{errors.department_id.message}</p>
           )}
           <button type="submit" className="btRegisterModal" disabled={loading}>
             {loading ? "Editando..." : "Editar Perfil"}
@@ -125,7 +132,7 @@ export const EditClientModal = () => {
     </StyledContainerModal>
   );
   return createPortal(
-    modalClientContent,
-    document.getElementById("modalClientEdit-root")
+    modalUserContent,
+    document.getElementById("modalUserEdit-root")
   );
 };
