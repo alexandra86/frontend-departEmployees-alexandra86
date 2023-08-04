@@ -3,12 +3,15 @@ import { StyleCardContact } from "./style.js";
 import moment from "moment";
 import "moment/locale/pt-br";
 import { HomeContext } from "../../contexts/HomeContext.jsx";
+import { AuthContext } from "../../contexts/AuthContext.jsx";
 
 export const CardTask = ({ elem }) => {
   const { removeTask, handleEditModal, setSelectTask } =
     useContext(HomeContext);
+  const { user } = useContext(AuthContext);
   const currentDateTime = new Date(elem.due_date);
   const formattedDate = moment(currentDateTime).format("DD/MM/YYYY");
+  const isUserTaskOwner = user.email && user.email === elem.user_task.email;
 
   return (
     <StyleCardContact key={elem.id}>
@@ -31,20 +34,22 @@ export const CardTask = ({ elem }) => {
           </p>
         </div>
       </div>
-      <div className="areabuttons">
-        <button
-          className="btEdit"
-          onClick={() => {
-            handleEditModal();
-            setSelectTask(elem);
-          }}
-        ></button>
-        <button
-          type="button"
-          onClick={() => removeTask(elem.id)}
-          className="btDelete"
-        ></button>
-      </div>
+      {isUserTaskOwner && (
+        <div className="areabuttons">
+          <button
+            className="btEdit"
+            onClick={() => {
+              handleEditModal();
+              setSelectTask(elem);
+            }}
+          ></button>
+          <button
+            type="button"
+            onClick={() => removeTask(elem.id)}
+            className="btDelete"
+          ></button>
+        </div>
+      )}
     </StyleCardContact>
   );
 };
