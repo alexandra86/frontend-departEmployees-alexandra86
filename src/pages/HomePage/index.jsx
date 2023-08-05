@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { HomeContext } from "../../contexts/HomeContext";
 import { StyledHomePage } from "./style";
-import logoHome from "../../img/LogoDepart.png";
+import logoHome from "../../img/logoDepart.png";
 import { RegisterTaskModal } from "../../components/RegisterTaskModal";
 import { EditTaskModal } from "../../components/EditTaskModal";
 import "react-toastify/dist/ReactToastify.css";

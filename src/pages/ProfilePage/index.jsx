@@ -1,10 +1,9 @@
 import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import logoHome from "../../img/LogoDepart.png";
+import logoDepart from "../../img/logoDepart.png";
 import { StyledProfilePage } from "./style";
 import { useNavigate } from "react-router-dom";
-// import { DeleteClientModal } from "../../components/DeleteClientModal";
 import "moment/locale/pt-br";
 import "react-toastify/dist/ReactToastify.css";
 import { HomeContext } from "../../contexts/HomeContext";
@@ -33,7 +32,7 @@ export const ProfilePage = () => {
         <StyledProfilePage>
           <header className="headerHome">
             <img
-              src={logoHome}
+              src={logoDepart}
               alt="logo da Kenzie Hub"
               className="logoDepart"
             />

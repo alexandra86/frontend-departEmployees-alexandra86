@@ -13,10 +13,10 @@
 O projeto representa uma aplicação onde um usuário pode cadastrar, editar e deletar suas tarefas. Possui páginas com as seguintes funcionalidades:
 </p><br>
 
- - Register - onde o usuário pode fazer o seu cadastro;
- - Login - logar, gerando um token, para acesso ao seu perfil;
- - HomePage do usuário - onde o usuário tem acesso aos departamentos da empresa e das tarefas, onde pode criar, editar ou deletá-las. 
-   
+- Register - onde o usuário pode fazer o seu cadastro;
+- Login - logar, gerando um token, para acesso ao seu perfil;
+- HomePage do usuário - onde o usuário tem acesso aos departamentos da empresa e das tarefas, onde pode criar, editar ou deletá-las.
+
 <h2 font-family="pattaya">Requisitos técnicos:</h2><br>
 
 - a aplicação utiliza api rodando localmente na máquina do usuário. É preciso clonar este <a href="https://github.com/alexandra86/backend-departEmployees-alexandra86" font-family="robotto" font-size="16px">repositório</a>, para visualizar suas funcionalidades;
@@ -43,4 +43,4 @@ O projeto representa uma aplicação onde um usuário pode cadastrar, editar e d
 </ul><br>
 
 <h2 font-family="pattaya">Link do Deploy via Vercel</h2><br>
-<a href="https://frontend-depart-employees-alexandra86.vercel.app/" font-family="robotto" font-size="16px">DepartEmployees</a>
+<a href="https://frontend-depart-employees-alexandra86-alexandra86.vercel.app/" font-family="robotto" font-size="16px">DepartEmployees</a>
