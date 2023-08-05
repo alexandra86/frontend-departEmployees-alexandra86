@@ -16,6 +16,9 @@ O projeto representa uma aplicação onde um usuário pode cadastrar, editar e d
 - Register - onde o usuário pode fazer o seu cadastro;
 - Login - logar, gerando um token, para acesso ao seu perfil;
 - HomePage do usuário - onde o usuário tem acesso aos departamentos da empresa e das tarefas, onde pode criar, editar ou deletá-las.
+- ProfilePage - onde o usuário poderá visualizar o seu perfil e fazer alterações.
+- DepartmentPage - onde o usuário poderá ver os departamentos já existentes na empresa.
+- EmployeePage - onde o usuário poderá ver todos os funcionários cadastrados na empresa.
 
 <h2 font-family="pattaya">Requisitos técnicos:</h2><br>
 
