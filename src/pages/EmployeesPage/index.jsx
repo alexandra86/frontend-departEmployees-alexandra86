@@ -48,7 +48,10 @@ export const EmployeesPage = () => {
             <div className="hello">
               <h2 className="areaWelcome">Olá! &#128521;</h2>
             </div>
-            <p className="areaWelcome">{user.firstName}</p>
+            <p className="areaWelcome">
+              {user.firstName}{" "}
+              <span className="areaWelcome">{user.lastName}</span>
+            </p>
           </div>
 
           <div className="areaInformation">

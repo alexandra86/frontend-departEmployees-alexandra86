@@ -244,15 +244,16 @@ export const StyledHomePage = styled.div`
       margin-top: 1.8125rem;
       margin-bottom: 1.773125rem;
       max-width: 90rem;
-      width: 80%;
+      width: 95%;
+      height: 25%;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .logoKenziHub {
+    .logoDepart {
       max-width: 10.5956rem;
       width: 100%;
-      height: 2.91438rem;
+      height: 3.91438rem;
     }
     .areaUser {
       display: flex;
@@ -292,6 +293,16 @@ export const StyledHomePage = styled.div`
       height: 8.875rem;
       width: 5.813rem;
       padding: 0.438rem 0.313rem;
+    }
+
+    .areaButtonsHome {
+      flex-direction: column;
+    }
+    .dropdownMenu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+      padding: 0.313rem 0.313rem 0.563rem 0.438rem;
     }
   }
 `;

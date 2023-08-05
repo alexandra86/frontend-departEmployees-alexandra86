@@ -13,6 +13,7 @@ import imgMobile from "../../img/buttonMobile.png";
 
 export const HomePage = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth > 800);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const { user, newLoading, setUser } = useContext(AuthContext);
   const {
     modalIsOpen,
@@ -72,16 +73,7 @@ export const HomePage = () => {
   };
 
   const vewMenu = () => {
-    return (
-      <div className="areaButtonsHome">
-        <button className="btComeBackDepart" onClick={goDepartClick}>
-          Departamentos
-        </button>
-        <button className="btComeBackLogin" onClick={goLoginClick}>
-          Sair
-        </button>
-      </div>
-    );
+    setDropdownOpen(!dropdownOpen);
   };
 
   return (
@@ -95,7 +87,35 @@ export const HomePage = () => {
               alt="logo de DepartEmployees"
               className="logoDepart"
             />
-            {isMobile ? (
+            {!isMobile ? (
+              <>
+                <img
+                  src={imgMobile}
+                  alt=""
+                  className="btMobile"
+                  onClick={vewMenu}
+                />
+                {dropdownOpen && (
+                  <div className="dropdownMenu">
+                    <button
+                      className="btComeBackDepart"
+                      onClick={goDepartClick}
+                    >
+                      Departamentos
+                    </button>
+                    <button
+                      className="btComeBackDepart"
+                      onClick={goEmployeeClick}
+                    >
+                      Funcionários
+                    </button>
+                    <button className="btComeBackLogin" onClick={goLoginClick}>
+                      Sair
+                    </button>
+                  </div>
+                )}
+              </>
+            ) : (
               <div className="areaButtonsHome">
                 <button className="btComeBackDepart" onClick={goDepartClick}>
                   Departamentos
@@ -107,13 +127,6 @@ export const HomePage = () => {
                   Sair
                 </button>
               </div>
-            ) : (
-              <img
-                src={imgMobile}
-                alt=""
-                className="btMobile"
-                onClick={vewMenu}
-              />
             )}
           </header>
 
